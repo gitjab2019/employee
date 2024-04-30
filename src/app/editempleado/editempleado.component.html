@@ -1,0 +1,31 @@
+<div class="container">
+  <form>
+    Name:
+    <input
+      type="text"
+      placeholder="Name"
+      [(ngModel)]="newNameToEdit"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    Surname:<input
+      type="text"
+      placeholder="Surname"
+      [(ngModel)]="newSurnameToEdit"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    Role:<input
+      type="text"
+      [(ngModel)]="newRoleToEdit"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    Salary:
+    <input
+      type="number"
+      [(ngModel)]="newSalaryToEdit"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <button type="submit" class="btn btn-info" (click)="editPerson()">
+      Update
+    </button>
+  </form>
+</div>
