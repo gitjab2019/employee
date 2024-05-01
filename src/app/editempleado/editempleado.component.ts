@@ -27,4 +27,9 @@ export class EditempleadoComponent implements OnInit {
     this.miEmpService.updateEmployee(this.aEmp, this.index);
     this.router.navigate(['']);
   }
+
+  deleteRegister(): void {
+    this.miEmpService.removeEmployee(this.index);
+    this.router.navigate(['']);
+  }
 }

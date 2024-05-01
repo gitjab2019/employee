@@ -26,8 +26,12 @@
       [(ngModel)]="aEmp.salary"
       [ngModelOptions]="{ standalone: true }"
     />
+    <br />
     <button type="submit" class="btn btn-info" (click)="this.updateRegister()">
       Update
+    </button>
+    <button type="submit" class="btn btn-info" (click)="this.deleteRegister()">
+      Remove
     </button>
   </form>
 </div>

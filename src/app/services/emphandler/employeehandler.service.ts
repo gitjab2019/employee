@@ -34,4 +34,8 @@ export class EmployeehandlerService implements OnInit {
     this.empleados[index].role = emp.role;
     this.empleados[index].salary = emp.salary;
   }
+
+  removeEmployee(index: number): void {
+    this.empleados.splice(index, 1);
+  }
 }
