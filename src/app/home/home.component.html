@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col">
       <app-emp
-        *ngFor="let emp of empleados; let i = index"
+        *ngFor="let emp of this.empService.empleados; let i = index"
         [empleadoSon]="emp"
         [indexSon]="i"
         [selectedVector]="selected"

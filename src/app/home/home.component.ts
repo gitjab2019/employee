@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../empleado.model';
-import { PopupService } from '../services/popup.service';
+import { PopupService } from '../services/messages/popup.service';
+import { EmployeehandlerService } from '../services/emphandler/employeehandler.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,10 @@ import { PopupService } from '../services/popup.service';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
+  [x: string]: any;
   title = 'Employee List';
   newEmp: Employee;
-  emp: Employee;
-  empleados: Employee[] = [];
+  //emp: Employee = [];
   selected: boolean[] = [];
   lastSelectedToEdit: number = -1;
   editionSelected = false;
@@ -26,28 +27,19 @@ export class HomeComponent implements OnInit {
   newRoleToEdit!: string;
   newSalaryToEdit!: number;
 
+  constructor(
+    private window: PopupService,
+    protected empService: EmployeehandlerService
+  ) {}
+
   ngOnInit() {
-    this.emp = new Employee('Jose', 'Bergues', 'Developer', 3500);
-    this.addInicEmployee(this.emp);
-
-    this.emp = new Employee('Ana', 'Oviedo', 'Developer', 3560);
-    this.addInicEmployee(this.emp);
-
-    this.emp = new Employee('Victoria', 'Bergues', 'Developer', 3760);
-    this.addInicEmployee(this.emp);
-
-    this.emp = new Employee('Paula', 'Bergues', 'Developer', 3898);
-    this.addInicEmployee(this.emp);
-
     this.inicSelected();
   }
 
-  constructor(private window: PopupService) {}
-
   addEmployee() {
     if (this.newName != '') {
-      this.window.popUp('Craendo: ' + this.newName);
-      this.empleados.push(
+      this.window.popUp('Creando: ' + this.newName);
+      this.empService.addEmployee(
         new Employee(
           this.newName,
           this.newSurname,
@@ -64,13 +56,15 @@ export class HomeComponent implements OnInit {
   }
 
   addInicEmployee(newE: Employee) {
-    this.empleados.push(newE);
+    this.empService.addEmployee(newE);
     this.selected.push(false);
   }
 
   removeSelected(): void {
     this.window.popUp('Eliminando Empleados... ');
-    this.empleados = this.empleados.filter((_, index) => !this.selected[index]);
+    this.empService.empleados = this.empService.empleados.filter(
+      (_, index) => !this.selected[index]
+    );
     this.selected = this.selected.filter((_, index) => !this.selected[index]);
     this.inicSelected();
   }
@@ -78,24 +72,33 @@ export class HomeComponent implements OnInit {
   inicSelected(): void {
     let j: number = 0;
 
-    for (j = 0; j < this.empleados.length; j++) this.selected[j] = false;
+    for (j = 0; j < this.empService.empleados.length; j++)
+      this.selected[j] = false;
     console.log(this.selected);
   }
 
   editSelected(): void {
     this.editionSelected = true;
-    this.newNameToEdit = this.empleados[this.lastSelectedToEdit].name;
-    this.newSurnameToEdit = this.empleados[this.lastSelectedToEdit].surname;
-    this.newRoleToEdit = this.empleados[this.lastSelectedToEdit].role;
-    this.newSalaryToEdit = this.empleados[this.lastSelectedToEdit].salary;
+    this.newNameToEdit =
+      this.empService.empleados[this.lastSelectedToEdit].name;
+    this.newSurnameToEdit =
+      this.empService.empleados[this.lastSelectedToEdit].surname;
+    this.newRoleToEdit =
+      this.empService.empleados[this.lastSelectedToEdit].role;
+    this.newSalaryToEdit =
+      this.empService.empleados[this.lastSelectedToEdit].salary;
   }
 
   editPerson() {
-    this.empleados[this.lastSelectedToEdit].name = this.newNameToEdit;
-    this.empleados[this.lastSelectedToEdit].surname = this.newSurnameToEdit;
-    this.empleados[this.lastSelectedToEdit].role = this.newRoleToEdit;
-    this.empleados[this.lastSelectedToEdit].salary = this.newSalaryToEdit;
-    console.log(this.empleados);
+    this.empService.empleados[this.lastSelectedToEdit].name =
+      this.newNameToEdit;
+    this.empService.empleados[this.lastSelectedToEdit].surname =
+      this.newSurnameToEdit;
+    this.empService.empleados[this.lastSelectedToEdit].role =
+      this.newRoleToEdit;
+    this.empService.empleados[this.lastSelectedToEdit].salary =
+      this.newSalaryToEdit;
+    console.log(this.empService.empleados);
     this.editionSelected = false;
   }
 

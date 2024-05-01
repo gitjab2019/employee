@@ -1,6 +1,8 @@
 <div class="listEmployee">
   {{ indexSon + 1 }}
-  <a href="">{{ empleadoSon.name }} {{ empleadoSon.surname }}</a>
+  <a [routerLink]="['/edit', indexSon]"
+    >{{ empleadoSon.name }} {{ empleadoSon.surname }}</a
+  >
   {{ empleadoSon.role }}
   {{ empleadoSon.salary }}
   <input

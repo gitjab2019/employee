@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { EmpComponent } from './emp/emp.component';
-import { PopupService } from './services/popup.service';
+import { PopupService } from './services/messages/popup.service';
 import { HomeComponent } from './home/home.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactComponent } from './contact/contact.component';
@@ -19,7 +19,7 @@ const myRoutes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'edit', component: EditempleadoComponent },
+  { path: 'edit/:id', component: EditempleadoComponent },
 ];
 
 @NgModule({

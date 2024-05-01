@@ -1,5 +1,5 @@
 export class Employee {
-  name!: string;
+  name: string = '';
   surname!: string;
   salary: number = 0;
   role!: string;
