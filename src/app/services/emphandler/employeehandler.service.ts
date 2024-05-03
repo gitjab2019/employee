@@ -6,11 +6,11 @@ import { Employee } from '../../empleado.model';
 })
 export class EmployeehandlerService implements OnInit {
   empleados: Employee[] = [
-    new Employee('Jose', 'Bergues', 'Developer', 3500),
-    new Employee('Ana', 'Oviedo', 'Developer', 3900),
-    new Employee('Victoria', 'Bergues', 'Developer', 4500),
-    new Employee('Paula', 'Bergues', 'Developer', 13500),
-    new Employee('Juan', 'Bergues', 'Developer', 55500),
+    new Employee('Luke', 'Skywalker', 'Developer', 3500),
+    new Employee('Obi Wan', 'Kenobi', 'Developer', 3900),
+    new Employee('Ahsoka', 'Tano', 'Developer', 4500),
+    new Employee('Din', 'Sharen', 'Developer', 13500),
+    new Employee('Bo Katan', 'Cruise', 'Developer', 55500),
   ];
 
   constructor() {}
