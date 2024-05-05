@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
   [x: string]: any;
   title = 'Employee List';
   newEmp: Employee;
-  //emp: Employee = [];
   selected: boolean[] = [];
   lastSelectedToEdit: number = -1;
   editionSelected = false;

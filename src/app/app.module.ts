@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditempleadoComponent } from './editempleado/editempleado.component';
+import { HeaderComponent } from './header/header.component';
 
 const myRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +32,7 @@ const myRoutes: Routes = [
     ProductsComponent,
     FooterComponent,
     EditempleadoComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
